@@ -1,0 +1,5 @@
+[run]
+include = boe_api/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
