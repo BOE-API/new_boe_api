@@ -9,15 +9,12 @@ __author__ = 'carlos'
 """ Process remaining days to process """
 
 def process_remaining_days_summary():
-    #last_day = Documento.objects.latest('fecha_publicacion').fecha_publicacion
-    last_day = None
+    last_day = Documento.objects.latest('fecha_publicacion').fecha_publicacion
     if not last_day:
-        last_day = datetime.date(year=2016, month=2, day=1)
-    else:
-        last_day = last_day.date()
+        last_day = datetime.date(year=1977, month=1, day=1)
 
-    until = datetime.date(year=2016, month=2, day=3)
-    #until = datetime.date.today()
+
+    until = datetime.date.today()
     for day in daterange(last_day, until):
         print("not celery", day)
         process_next_day_summary.delay(day)
