@@ -33,7 +33,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ('djangosecure', )
 
-SDJANGO_SENTRY_DSNECURITY_MIDDLEWARE = (
+SECURITY_MIDDLEWARE = (
     'djangosecure.middleware.SecurityMiddleware',
 )
 
