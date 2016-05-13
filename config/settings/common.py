@@ -37,7 +37,6 @@ DJANGO_APPS = (
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
-    'opbeat.contrib.django',
     'djcelery'
 
 
@@ -63,9 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     #'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
-
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 )
 
 # MIGRATIONS CONFIGURATION
