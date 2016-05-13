@@ -15,7 +15,6 @@ from lxml import etree, objectify
 from bs4 import BeautifulSoup
 from pattern.web import URL
 
-last_legislatura = Legislatura.objects.get_or_none(final__isnull = True)
 
 
 class ProcessDocument():
@@ -27,6 +26,8 @@ class ProcessDocument():
     doc = Documento()
     metadatos = None
     def __init__(self, url_xml):
+        self.last_legislatura = Legislatura.objects.get_or_none(final__isnull = True)
+
         self.url = url_xml
         self.downloadXML()
         self.xmlToObject()
@@ -152,8 +153,8 @@ class ProcessDocument():
         doc.fecha_disposicion = self.textToDate(self.getElement(self.metadatos, 'fecha_disposicion'))
         if doc.fecha_disposicion:
 
-            if last_legislatura and doc.fecha_disposicion.date() >= last_legislatura.inicio:
-                doc.legislatura = last_legislatura
+            if self.last_legislatura and doc.fecha_disposicion.date() >= self.last_legislatura.inicio:
+                doc.legislatura = self.last_legislatura
                 print doc.legislatura
             else:
                 legislatura = Legislatura.objects.get_or_none(inicio__lte = doc.fecha_disposicion, final__gt = doc.fecha_disposicion)

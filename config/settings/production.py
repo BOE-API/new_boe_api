@@ -50,6 +50,8 @@ OPBEAT = {
 }
 MIDDLEWARE_CLASSES = (
     'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+      'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ) + MIDDLEWARE_CLASSES
 # set this to 60 seconds and then to 518400 when you can prove it works
 SECURE_HSTS_SECONDS = 60
@@ -66,7 +68,7 @@ SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT', default=True)
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['boeapi.com'])
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['boeapi.com', "localhost"])
 # END SITE CONFIGURATION
 
 INSTALLED_APPS += ('gunicorn', )

@@ -70,3 +70,4 @@ boe_api/media/
 
 # MailHog binary
 mailhog
+staticfiles/
