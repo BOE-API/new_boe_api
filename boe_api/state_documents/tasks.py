@@ -34,7 +34,7 @@ def processDay(d, url, url_boe, url_borme):
         log.info(url_sum)
         procesarSumario(url_sum, url_boe)
 
-@app_celery.task
+@app_celery.task(time_limit=60)
 def processDocument(url):
     try:
         d = ProcessDocument(url)
@@ -61,7 +61,7 @@ def procesarSumario(url_sumario, url_boe):
         url_doc = url_boe.format(id)
         processDocument.delay(url_doc)
 
-@app_celery.task
+@app_celery.task(time_limit=60)
 def process_next_day_summary(day):
 
     today = day

@@ -13,8 +13,8 @@ def process_remaining_days_summary():
     if not last_day:
         last_day = datetime.date(year=1977, month=1, day=1)
 
-
-    until = datetime.date.today()
+    until = datetime.date(year=1979, month=2, day=3)
+    #until = datetime.date.today()
     for day in daterange(last_day, until):
         print("not celery", day)
         process_next_day_summary.delay(day)
